@@ -36,7 +36,6 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :test do
@@ -53,7 +52,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 gem 'coffee-rails', '~> 4.2'
-gem 'jquery-rails'
-gem 'yarn', '~> 0.1.1'
-gem 'rmagick'
 gem 'image_processing', '~> 1.2'
+gem 'jquery-rails'
+gem 'rmagick'
+gem 'yarn', '~> 0.1.1'
