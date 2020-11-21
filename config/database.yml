@@ -24,6 +24,9 @@ default: &default
 development:
   <<: *default
   database: Moodle_rails_development
+
+  # EDITOR=vim bin/rails credentials:edit
+  # The password associated with the postgres role (username).
   username: <%= Rails.application.credentials.development[:username] %>
   password: <%= Rails.application.credentials.development[:password] %>
 
