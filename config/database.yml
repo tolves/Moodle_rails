@@ -63,6 +63,8 @@ development:
 test:
   <<: *default
   database: Moodle_rails_test
+  username: <%= Rails.application.credentials.development[:username] %>
+  password: <%= Rails.application.credentials.development[:password] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
