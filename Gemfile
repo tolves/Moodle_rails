@@ -56,6 +56,6 @@ gem 'coffee-rails', '~> 4.2'
 gem 'image_processing', '~> 1.2'
 # gem 'jquery-rails'
 # gem 'popper_js', '~> 1.14.5'
-
+gem 'font-awesome-rails'
 gem 'rmagick'
 gem 'yarn', '~> 0.1.1'
