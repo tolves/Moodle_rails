@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :courses
-
-  namespace :admin do
+  resources :admin do
     resources :users do
       resources :roles
     end
