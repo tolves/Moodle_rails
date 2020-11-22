@@ -1,4 +1,4 @@
-class Admin::Users::RolesController < ApplicationController
+class Admin::RolesController < ApplicationController
   def index; end
 
   def show; end

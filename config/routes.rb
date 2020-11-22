@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :courses
-  resources :admin do
-    resources :users do
-      resources :roles
-    end
+  namespace :admin do
+    resources :users
     resources :courses
-    # resources :categories
+    resources :roles
   end
+
+  get '/admin', to: 'admin#index'
 
 end
