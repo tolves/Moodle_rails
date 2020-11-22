@@ -1,15 +1,28 @@
+/*
+  ./config/webpack/environment.js
+  Info for this file can be found
+  github.com/rails/webpacker/blob/master/docs/webpack.md
+*/
+
 const { environment } = require('@rails/webpacker')
 
-const webpack = require("webpack")
+const webpack = require('webpack')
 
-environment.plugins.append("Provide", new webpack.ProvidePlugin({
+// Add an additional plugin of your choosing : ProvidePlugin
+environment.plugins.prepend('Provide', new webpack.ProvidePlugin({
+        $: 'jquery',
+        JQuery: 'jquery',
+        jquery: 'jquery',
+        "window.jQuery": "jquery",
+        Popper: ['popper.js', 'default'], // for Bootstrap 4
+    })
+)
 
-    $: 'jquery',
+const config = environment.toWebpackConfig()
 
-    jQuery: 'jquery',
+config.resolve.alias = {
+        jquery: "jquery/src/jquery"
+}
 
-    Popper: ['popper.js', 'default']
-
-}))
-
+// export the updated config
 module.exports = environment

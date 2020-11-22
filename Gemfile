@@ -51,8 +51,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
+# gem 'bootstrap'
 gem 'coffee-rails', '~> 4.2'
 gem 'image_processing', '~> 1.2'
-gem 'jquery-rails'
+# gem 'jquery-rails'
+# gem 'popper_js', '~> 1.14.5'
+
 gem 'rmagick'
 gem 'yarn', '~> 0.1.1'
