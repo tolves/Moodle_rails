@@ -8,7 +8,6 @@
 user = User.find_or_create_by!(email: 'admin@914.today') do |user|
   user.password = 123456
   user.password_confirmation = 123456
-  user.username = 'admin'
   user.role = 1
   # user.admin!
 end
