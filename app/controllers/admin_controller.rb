@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
-  def index; end
+  def index
+    @menu = %w[a b c d]
+  end
 
   def show; end
 

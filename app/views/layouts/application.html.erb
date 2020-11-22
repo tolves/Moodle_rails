@@ -10,9 +10,19 @@
 </head>
 
 <body>
-<%= render 'layouts/header' %>
-
-<%= yield %>
-<%= render 'layouts/footer' %>
+<div class="d-flex" id="wrapper">
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <%= render 'layouts/left_menu' %>
+  </div>
+  <div id="page-content-wrapper">
+    <div id="nav">
+      <%= render 'layouts/nav' %>
+    </div>
+    <div class="container-fluid">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
+  </div>
+  <div id="bottom"><%= render 'layouts/footer' %></div>
+</div>
 </body>
 </html>
