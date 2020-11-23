@@ -19,7 +19,9 @@
  */
 
 body {
-  background: no-repeat center/100% image_url('bg.jpg');
+  background: no-repeat center image_url('bg.jpg');
+  background-attachment:fixed;
+  background-size: 100%;
 }
 
 @media (min-width: 1500px) {
