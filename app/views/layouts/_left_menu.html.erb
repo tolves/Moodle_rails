@@ -1,12 +1,14 @@
 <div class="sidebar-heading font-weight-bold">Moodle Rails</div>
 <div class="list-group list-group-flush">
   <%# @menu.each do |m| %>
-<!--    <li><a href="#" class="list-group-item list-group-item-action bg-light"><%#= m %></a></li>-->
+  <!--    <li><a href="#" class="list-group-item list-group-item-action bg-light"><%#= m %></a></li>-->
   <%# end %>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Calendar</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Private files</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Customise Content</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">My courses</a>
-  <%= link_to :Site_Administration, admin_path, class: 'list-group-item list-group-item-action bg-light' %>
+  <% if user_signed_in? %>
+    <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+    <a href="#" class="list-group-item list-group-item-action bg-light">Calendar</a>
+    <a href="#" class="list-group-item list-group-item-action bg-light">Private files</a>
+    <a href="#" class="list-group-item list-group-item-action bg-light">Customise Content</a>
+    <a href="#" class="list-group-item list-group-item-action bg-light">My courses</a>
+    <%= link_to :Site_Administration, admin_path, class: 'list-group-item list-group-item-action bg-light' %>
+  <% end %>
 </div>
