@@ -2,8 +2,25 @@ class AdminController < ApplicationController
   def index
     @menu = %w[a b c d]
     @nav_items = %w[site_administration users courses grades plugins apperance server reports development]
+    @tabs = admin_dashboard
+  end
 
-    @tabs = {
+  def show; end
+
+  def new; end
+
+  def create; end
+
+  def edit; end
+
+  def update; end
+
+  def destroy; end
+
+  private
+
+  def admin_dashboard
+    {
       users: {
         accounts: {
           'browse_list_users' => admin_users_path,
@@ -43,19 +60,15 @@ class AdminController < ApplicationController
           'add_new_badges' => '',
           'badges_settings' => '',
         }
+      },
+      courses: {
+        courses: {
+          'manage_courses' => '',
+          'manage_courses_categories' => '',
+          'course_custom_fileds' => '',
+          'course_settings' => '',
+        }
       }
     }
   end
-
-  def show; end
-
-  def new; end
-
-  def create; end
-
-  def edit; end
-
-  def update; end
-
-  def destroy; end
 end
