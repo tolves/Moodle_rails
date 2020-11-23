@@ -87,6 +87,7 @@ test:
 #
 production:
   <<: *default
-  database: Moodle_rails_production
-  username: Moodle_rails
-  password: <%= ENV['MOODLE_RAILS_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+#  database: Moodle_rails_production
+#  username: Moodle_rails
+#  password: <%#= ENV['MOODLE_RAILS_DATABASE_PASSWORD'] %>
