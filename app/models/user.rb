@@ -20,4 +20,7 @@ class User < ApplicationRecord
   #     where(conditions.to_h).first
   #   end
   # end
+  def full_name
+    "#{givenname} #{surname}"
+  end
 end

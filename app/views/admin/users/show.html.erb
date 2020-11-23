@@ -1,0 +1,19 @@
+<p>
+  <strong>Email:</strong>
+  <%== @user.email %>
+</p>
+<p>
+  <strong>Full name:</strong>
+  <%== @user.full_name %>
+</p>
+<p>
+  <strong>Avatar</strong>
+  <%# if @user.avatar.attached? %>
+    <%#= image_tag @user.avatar.variant(resize: "100x100") %>
+    <%#= image_tag @user.avatar.variant(resize_to_limit: [50, 100]) %>
+    <%#= image_tag @user.avatar%>
+    <%#= url_for(@user.avatar) %>
+  <%# end %>
+</p>
+
+<p><%== link_to 'Edit User Profiles', edit_admin_user_path(@user.id), method: :get %></p>
