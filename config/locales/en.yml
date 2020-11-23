@@ -36,3 +36,9 @@ en:
       update:
         success: "Account: %{email} has been updated successfully."
         failure: "Account: %{email} has not been updated successfully."
+  users:
+    show:
+      email: "Email"
+      fullname: "Full Name"
+      avatar: "Avatar"
+      edit_profile: "Edit Profile"

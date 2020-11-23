@@ -1,23 +1,14 @@
 <p>
-  <strong>email:</strong>
+  <strong><%= t 'email' %>:</strong>
   <%== current_user.email %>
 </p>
 
 <p>
-  <strong>password:</strong>
-  <%== current_user.password %>
-</p>
-
-<p>
-  <strong>givenname:</strong>
-  <%== current_user.givenname %>
+  <strong><%= t 'fullname' %>:</strong>
+  <%== current_user.full_name %>
 </p>
 <p>
-  <strong>surname:</strong>
-  <%== current_user.surname %>
-</p>
-<p>
-  <strong>Avatar</strong>
+  <strong><%= t 'avatar' %></strong>
   <%# if @user.avatar.attached? %>
     <%#= image_tag @user.avatar.variant(resize: "100x100") %>
     <%#= image_tag @user.avatar.variant(resize_to_limit: [50, 100]) %>
@@ -26,4 +17,4 @@
   <%# end %>
 </p>
 
-<p><%== link_to 'Update Profiles', edit_user_registration_path, method: :get %></p>
+<p><%== link_to t('edit_profile'), edit_user_registration_path, method: :get %></p>

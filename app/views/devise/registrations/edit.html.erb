@@ -4,41 +4,36 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field">
+        <div class="field h5">
           <%= f.label :email %>: <%== @user.email %><br/>
         </div>
+        <br/>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
         <div class="field">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
-          <%= f.password_field :password, autocomplete: "new-password" %>
-          <% if @minimum_password_length %>
-            <br/>
-            <em><%= @minimum_password_length %> characters minimum</em>
-          <% end %>
+          <%= t :password %>: <i>(leave blank if you don't want to change it)</i><br/>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length} characters minimum", class: "p-1 border-1" %>
         </div>
+        <br/>
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: :password_confirmation, class: "p-1 border-1" %>
+        </div>
+        <br/>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br/>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <i>(we need your current password to confirm your changes)</i><br/>
+          <%= f.password_field :current_password, autocomplete: "current-password" , placeholder: :current_password, class: "p-1 border-1" %>
         </div>
-
+        <br/>
         <div class="field">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
-          <%= f.password_field :current_password, autocomplete: "current-password" %>
+          <%= f.text_field :givenname, autocomplete: "givenname" , placeholder: :givenname, class: "p-1 border-1" %>
         </div>
-
+        <br/>
         <div class="field">
-          <%= f.label :givenname %><br/>
-          <%= f.text_field :givenname, autocomplete: "givenname" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :surname %> <br/>
-          <%= f.text_field :surname, autocomplete: "surname" %>
+          <%= f.text_field :surname, autocomplete: "surname" , placeholder: :surname, class: "p-1 border-1" %>
         </div>
         <br/>
         <div class="actions">
