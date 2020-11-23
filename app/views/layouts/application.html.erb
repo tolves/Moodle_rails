@@ -20,11 +20,8 @@
       <%= render 'layouts/nav' %>
     </div>
     <div class="container-fluid">
-      <% if notice || alert %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      <% end %>
-      <%= content_for?(:content) ? yield(:content) : yield %>
+      <%= render 'layouts/header' %>
+      <%= yield %>
     </div>
   </div>
   <div id="bottom"><%= render 'layouts/footer' %></div>
