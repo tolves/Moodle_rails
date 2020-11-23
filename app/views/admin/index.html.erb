@@ -1,6 +1,31 @@
+<nav>
+  <div class="nav nav-tabs" role="tablist" id="nav-tab">
+    <% @nav_items.each do |n| %>
+      <a class="nav-item nav-link <%= 'active' if n == 'site_administration' %>" id="nav-<%= n %>-tab" data-toggle="tab" href="#nav-<%= n %>" role="tab" aria-controls="nav-<%= n %>" <%= 'aria-selected="true"' if n == 'site_administration' %>><%= n.titleize %></a>
+    <% end %>
+  </div>
+</nav>
+<div class="tab-content mt-3" id="nav-tabContent">
+  <% @tabs.each do |tab, rows| %>
+    <div class="tab-pane fade <%= 'active show' if tab.to_s == 'site_administration' %>" id="nav-<%= tab %>" role="tabpanel" aria-labelledby="nav-<%= tab %>-tab">
+    <% rows.each do |title, links|%>
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+                <h4><%= title.to_s.titleize  %></h4>
+              </div>
+              <div class="col-sm-7">
+                <ul class="list-group">
+                  <% links.each do |link| %>
+                    <%= link_to link[0].titleize, link[1], class:'list-group-item list-group-item-action' %>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <hr>
+        </div>
 
-<%= link_to :manage_users, admin_users_path, class: 'nav-link' %>
-
-<%= link_to :manage_courses, admin_courses_path, class: 'nav-link' %>
-
-<%= link_to :manage_roles, admin_roles_path, class: 'nav-link' %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
