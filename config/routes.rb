@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # if devise under resources :users
   # log out will find users#destroy instead of devise#destroy
   devise_for :users
-  resources :users
+  resources :users, except: %i[index create]
 
   resources :courses
 

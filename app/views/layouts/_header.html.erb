@@ -14,7 +14,8 @@
               <% @header_links.each do |link| %>
                 <li class="breadcrumb-item">
                   <% link[0].each do |name, url| %>
-                    <%= link_to name.titleize, url %>
+                    <%=url.class %>
+                    <%= link_to name.titleize, url.to_sym %>
                   <% end %>
                 </li>
               <% end %>

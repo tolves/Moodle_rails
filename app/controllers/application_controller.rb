@@ -32,7 +32,12 @@ class ApplicationController < ActionController::Base
     @header_links = []
     while paths.size > 1 && paths.first
       paths.pop
-      @header_links.push [paths.last => '/' << paths.join('/')]
+      path = paths.join('_')
+      if Rails.application.routes.url_helpers.method_defined?((path + '_path').to_sym)
+        @header_links.push [paths.last => path]
+      else
+        next
+      end
     end
     @header_links.reverse!
   end
