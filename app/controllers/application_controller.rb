@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :flash_format
+  before_action :header_links
 
   protected
 
@@ -23,5 +24,16 @@ class ApplicationController < ActionController::Base
       flash[:primary] = notice
       flash.delete(:notice)
     end
+  end
+
+  def header_links
+    paths = request.path.split(%r{/})
+    paths.shift
+    @header_links = []
+    while paths.size > 1 && paths.first
+      paths.pop
+      @header_links.push [paths.last => '/' << paths.join('/')]
+    end
+    @header_links.reverse!
   end
 end

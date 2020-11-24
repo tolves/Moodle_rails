@@ -9,9 +9,17 @@
       </div>
       <div class="d-flex flex-wrap">
         <nav aria-label="Navigation bar">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">Links</li>
-          </ol>
+          <% unless @header_links.blank? %>
+            <ol class="breadcrumb">
+              <% @header_links.each do |link| %>
+                <li class="breadcrumb-item">
+                  <% link[0].each do |name, url| %>
+                    <%= link_to name.titleize, url %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ol>
+          <% end %>
         </nav>
       </div>
     </div>
