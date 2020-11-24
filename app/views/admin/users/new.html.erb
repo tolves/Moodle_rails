@@ -1,0 +1,36 @@
+<h2>Add A New User</h2>
+
+<%= form_for(@user, url: admin_users_path(@user), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @user %>
+
+  <div class="field">
+    <%= f.email_field :email , autocomplete: "email", placeholder: :email, class: "p-1 border-1" %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: :password, class: "p-1 border-1"  %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.text_field :givenname, autocomplete: "givenname", placeholder: :givenname, class: "p-1 border-1" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.text_field :surname, autocomplete: "surname", placeholder: :surname, class: "p-1 border-1" %>
+  </div>
+  <br />
+  <div class="field">
+    <%== f.collection_select :role_id, Role.all, :id, :name, prompt: "Choose A Role" %>
+  </div>
+
+  <br/>
+  <div class="actions">
+    <%= f.submit%>
+  </div>
+<% end %>
+<br/>
+<%= link_to "Back", :back %>

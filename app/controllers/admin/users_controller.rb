@@ -7,12 +7,15 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def new
+    @user = User.new
+  end
+
   def create; end
 
   def edit
     @user = User.find(params[:id])
     @minimum_password_length = 6
-
   end
 
   def update
@@ -42,7 +45,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def account_update_params
-    attrs = %i[password password_confirmation current_password givenname surname role]
+    attrs = %i[password password_confirmation current_password givenname surname role_id]
     params.require(:user).permit(attrs)
   end
 
