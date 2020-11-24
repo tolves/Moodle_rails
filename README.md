@@ -12,7 +12,7 @@ Ruby version
 
 Heroku
 
-1. set config RAILS_MASTER_KEY
+1. heroku config:set RAILS_MASTER_KEY= #{master key}
 2. Database creation
 - rails db:migrate RAILS_ENV=production
 3. Database initialization
