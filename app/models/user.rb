@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable #, authentication_keys: [:login]
   belongs_to :role
   has_one_attached :avatar
+  validate :avatar_type
 
   # attr_writer :login
   # validates :username, presence: true, uniqueness: { case_sensitive: false }
@@ -23,5 +24,18 @@ class User < ApplicationRecord
   # end
   def full_name
     "#{givenname} #{surname}"
+  end
+
+  def avatar_type
+    if avatar.attached? == false
+      errors.add(:avatar, "is missing!")
+    else
+      unless avatar.content_type.in?(%('image/jpeg image/png image/jpg image/gif'))
+        errors.add(:avatar, "type needs to be a jpg/jpeg/png/gif")
+      end
+      unless avatar.byte_size <= 1.megabyte
+        errors.add(:main_image, "is too big")
+      end
+    end
   end
 end
