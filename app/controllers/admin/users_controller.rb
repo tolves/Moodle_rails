@@ -23,18 +23,18 @@ class Admin::UsersController < ApplicationController
     path = if account_update_params[:password].blank?
              if update_skip_password user, account_update_params
                flash[:success] = t('.success', email: user.email)
-               admin_user_path(user.id)
+               admin_user_path(user)
              else
                flash[:warning] = user.errors.messages
-               edit_admin_user_path(user.id)
+               edit_admin_user_path(user)
              end
            else
              if user.update(account_update_params)
                flash[:success] = t('.success', email: user.email)
-               admin_user_path(user.id)
+               admin_user_path(user)
              else
                flash[:warning] = user.errors.messages
-               edit_admin_user_path(user.id)
+               edit_admin_user_path(user)
              end
            end
     redirect_to path
