@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable #, authentication_keys: [:login]
   belongs_to :role
+  has_and_belongs_to_many :courses
+  has_many :policies
+  has_and_belongs_to_many :groups
+
   has_one_attached :avatar
   validate :avatar_type
 
