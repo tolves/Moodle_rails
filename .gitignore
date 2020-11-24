@@ -40,4 +40,3 @@ yarn-debug.log*
 
 .idea/*
 .idea
-/app/views/layouts/_footer.html.erb
