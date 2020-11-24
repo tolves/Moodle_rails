@@ -9,12 +9,12 @@
 </p>
 <p>
   <strong><%= t 'avatar' %></strong>
-  <%# if @user.avatar.attached? %>
-    <%#= image_tag @user.avatar.variant(resize: "100x100") %>
-    <%#= image_tag @user.avatar.variant(resize_to_limit: [50, 100]) %>
-    <%#= image_tag @user.avatar%>
-    <%#= url_for(@user.avatar) %>
-  <%# end %>
+  <% if current_user.avatar.attached? %>
+    <%= image_tag current_user.avatar.variant(resize: "100x100") %>
+    <%= image_tag current_user.avatar.variant(resize_to_limit: [50, 100]) %>
+    <%= image_tag current_user.avatar%>
+    <%= url_for(current_user.avatar) %>
+  <% end %>
 </p>
 
 <p><%== link_to t('edit_profile'), edit_user_registration_path, method: :get %></p>

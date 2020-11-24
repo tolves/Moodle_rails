@@ -36,6 +36,10 @@
           <%= f.text_field :surname, autocomplete: "surname" , placeholder: :surname, class: "p-1 border-1" %>
         </div>
         <br/>
+        <div class="field">
+          <%= f.file_field :avatar, class: "p-1 border-1" %>
+        </div>
+        <br/>
         <div class="actions">
           <%= f.submit "Update" %>
         </div>

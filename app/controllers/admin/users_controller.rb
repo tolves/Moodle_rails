@@ -45,7 +45,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def account_update_params
-    attrs = %i[password password_confirmation current_password givenname surname role_id]
+    attrs = %i[password password_confirmation current_password givenname surname role_id avatar]
     params.require(:user).permit(attrs)
   end
 
