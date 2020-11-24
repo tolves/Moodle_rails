@@ -7,6 +7,10 @@
   <%== @user.full_name %>
 </p>
 <p>
+  <strong>Role:</strong>
+  <%== @user.role.name %>
+</p>
+<p>
   <strong>Avatar</strong>
   <%# if @user.avatar.attached? %>
     <%#= image_tag @user.avatar.variant(resize: "100x100") %>

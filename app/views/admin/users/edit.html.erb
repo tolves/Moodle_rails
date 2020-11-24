@@ -6,26 +6,25 @@
   <div class="field">
     <%= f.label :email %>: <%==@user.email %><br />
   </div>
-
+  <br/>
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <%= f.label :password %>: <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" , placeholder: "#{@minimum_password_length} characters minimum", class: "p-1 border-1" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.text_field :givenname, autocomplete: "givenname", placeholder: :givenname, class: "p-1 border-1"  %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.text_field :surname, autocomplete: "surname", placeholder: :surname, class: "p-1 border-1"  %>
+  </div>
+  <br>
+  <div class="field">
+    <%== f.collection_select :role_id, Role.all, :id, :name, prompt: "Pick A Role" %>
   </div>
 
-  <div class="field">
-    <%= f.label :givenname %><br />
-    <%= f.text_field :givenname, autocomplete: "givenname" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :surname %> <br />
-    <%= f.text_field :surname, autocomplete: "surname" %>
-  </div>
-
+  <br/>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
