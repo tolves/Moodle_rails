@@ -11,9 +11,16 @@ Rails.application.routes.draw do
   resources :courses
 
   namespace :admin do
-    resources :users
-    resources :courses
-    resources :roles
+    resources :users do
+      resources :policies
+    end
+    resources :courses do
+      resources :policies
+    end
+    resources :roles do
+      resources :policies
+    end
+    resources :policies
   end
 
   get '/admin', to: 'admin#index'
