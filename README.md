@@ -1,4 +1,4 @@
-# README
+# https://moodle-ror.herokuapp.com/
 
 Ruby version
 
@@ -10,7 +10,7 @@ Ruby version
 
 
 
-Heroku
+Heroku deployment
 
 1. heroku config:set RAILS_MASTER_KEY= #{master key}
 2. Database creation
