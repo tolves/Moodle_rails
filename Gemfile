@@ -22,9 +22,6 @@ gem 'jbuilder', github: 'rails/jbuilder', branch: 'master'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -49,15 +46,28 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# user authentication
 gem 'devise'
 
-# gem 'bootstrap'
 gem 'coffee-rails', '~> 4.2'
-gem 'image_processing', '~> 1.2'
-# gem 'jquery-rails'
-# gem 'popper_js', '~> 1.14.5'
+
+# provide icons
 gem 'font-awesome-rails'
+
+# imagemagick or graphicsmagick needed to be installed first
+# avatar processing
+gem 'image_processing', '~> 1.2'
 gem 'rmagick'
+
 gem 'yarn', '~> 0.1.1'
 
+# s3 storage
 gem 'aws-sdk-s3', require: false
+
+# pagination
+gem 'kaminari'
+
+# these js frameworks are supported by yarn add jquery, popper.js, bootstrap
+# gem 'jquery-rails'
+# gem 'popper_js', '~> 1.14.5'
+# gem 'bootstrap'
