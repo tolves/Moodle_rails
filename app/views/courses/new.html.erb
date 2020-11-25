@@ -1,0 +1,12 @@
+new course
+
+<%= form_for(@course, url: courses_path(@course)) do |f| %>
+
+  <div class="field">
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: :name, class: "p-1 border-1" %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
