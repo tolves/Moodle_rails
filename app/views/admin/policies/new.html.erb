@@ -1,0 +1,24 @@
+<h2>Add A New Policy</h2>
+
+<%= form_for(@policy, url: admin_policies_path(@policy), html: {method: :post}) do |f| %>
+
+  <%= f.hidden_field :subject_id, value: params[:subject_id] %>
+  <%= f.hidden_field :subject_type, value: params[:subject_type].capitalize %>
+  <%= f.hidden_field :object_type, value: 'Course' %>
+
+  <div class="field">
+    <%= f.text_field :name, autocomplete: "name", placeholder: :name, class: "p-1 border-1" %>
+  </div>
+  <br/>
+  <div class="field">
+    <%== f.label :object_id %><br>
+    <%== f.collection_select :object_id, Course.all, :id, :name, prompt: "Pick a Course" %>
+  </div>
+  <%== render partial: 'items', locals: {items: @policy_items, f: f} %>
+  <br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<br/>
+<%= button_to :back, :back, method: :get %>

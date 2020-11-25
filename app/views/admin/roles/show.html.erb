@@ -1,0 +1,26 @@
+<p>
+  <strong>Role Name:</strong>
+  <%== @role.name %>
+</p>
+<%= link_to :attached_new_policies, new_admin_role_policy_path(@role, :subject_type => :role, :subject_id => @role) %>
+<p><strong>Policies</strong></p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Object</th>
+    <th>View</th>
+    <th>New</th>
+    <th>Edit</th>
+    <th>Destroy</th>
+  </tr>
+  <% @role.policies.each do |policy| %>
+    <tr>
+      <td><%= policy.name %></td>
+      <td><%= policy.object.name %></td>
+      <td><%= policy.policy_item.view %></td>
+      <td><%= policy.policy_item.new %></td>
+      <td><%= policy.policy_item.edit %></td>
+      <td><%= policy.policy_item.remove %></td>
+    </tr>
+  <% end %>
+</table>

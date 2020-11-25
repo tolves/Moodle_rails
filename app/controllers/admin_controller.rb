@@ -30,8 +30,8 @@ class AdminController < ApplicationController
           'group' => ''
         },
         permissions: {
-          'manage_roles' => '',
-          'define_roles' => ''
+            'manage_roles' => admin_roles_path,
+            'add_a_new_role' => new_admin_role_path
         }
       },
       site_administration: {
@@ -63,10 +63,11 @@ class AdminController < ApplicationController
       },
       courses: {
         courses: {
-          'manage_courses' => '',
-          'manage_courses_categories' => '',
-          'course_custom_fileds' => '',
-          'course_settings' => '',
+            'manage_courses' => courses_path,
+            'manage_courses_categories' => '',
+            'add_a_new_course' => new_course_path,
+            'course_custom_fileds' => '',
+            'course_settings' => '',
         }
       }
     }

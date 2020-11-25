@@ -1,0 +1,30 @@
+<%= f.fields_for items do |i| %>
+  <div class="field">
+    <%= i.label :view %><br>
+    <%= i.radio_button :view, :true %>
+    <%= i.label(:view, :true) %>
+    <%= i.radio_button :view, :false %>
+    <%= i.label(:view, :false) %>
+  </div>
+  <div class="field">
+    <%= i.label :new %><br>
+    <%= i.radio_button :new, :true %>
+    <%= i.label(:new, :true) %>
+    <%= i.radio_button :new, :false %>
+    <%= i.label(:new, :false) %>
+  </div>
+  <div class="field">
+    <%= i.label :edit %><br>
+    <%= i.radio_button :edit, :true %>
+    <%= i.label(:edit, :true) %>
+    <%= i.radio_button :edit, :false %>
+    <%= i.label(:edit, :false) %>
+  </div>
+  <div class="field">
+    <%= i.label :remove %><br>
+    <%= i.radio_button :remove, :true %>
+    <%= i.label(:remove, :true) %>
+    <%= i.radio_button :remove, :false %>
+    <%= i.label(:remove, :false) %>
+  </div>
+<% end %>

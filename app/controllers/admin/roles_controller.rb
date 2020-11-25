@@ -1,7 +1,11 @@
 class Admin::RolesController < ApplicationController
-  def index; end
+  def index
+    @roles = Role.all
+  end
 
-  def show; end
+  def show
+    @role = Role.find(params[:id])
+  end
 
   def new; end
 
