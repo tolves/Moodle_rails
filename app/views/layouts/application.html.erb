@@ -10,26 +10,36 @@
 
 </head>
 
-<body>
+<body id="background">
+
 <div class="d-flex container" id="wrapper">
   <% if user_signed_in? %>
     <div class="bg-light border-right" id="sidebar-wrapper">
       <%= render 'layouts/left_menu' %>
     </div>
-  <% end %>
-  <div id="page-content-wrapper">
-    <% if user_signed_in? %>
+    <div id="page-content-wrapper">
       <div id="nav" class="container-fluid">
         <%= render 'layouts/nav' %>
       </div>
-    <% end %>
-    <div id="page-content" class="container">
+      <div id="page-content" class="container">
+        <%= render 'layouts/flash' %>
         <%= render 'layouts/header' %>
-      <div class="bg-light mt-3 p-4">
-        <%= yield %>
+        <div class="bg-light mt-3 p-4">
+          <%= yield %>
+        </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <%= video_tag('bg.mp4', id: 'background_video', autoplay: true, loop: true, muted: true) %>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-3 text-center bg-light opacity-9 mt-6">
+          <%= render 'layouts/flash' %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <div id="bottom"><%= render 'layouts/footer' %></div>
 </div>
 </body>
