@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_131705) do
+ActiveRecord::Schema.define(version: 2020_11_25_172914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,10 +65,6 @@ ActiveRecord::Schema.define(version: 2020_11_25_131705) do
 
   create_table "policies", force: :cascade do |t|
     t.string "name"
-    t.boolean "view"
-    t.boolean "destroy"
-    t.boolean "new"
-    t.boolean "edit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "subject_type"
@@ -77,6 +73,18 @@ ActiveRecord::Schema.define(version: 2020_11_25_131705) do
     t.bigint "object_id"
     t.index ["object_type", "object_id"], name: "index_policies_on_object_type_and_object_id"
     t.index ["subject_type", "subject_id"], name: "index_policies_on_subject_type_and_subject_id"
+  end
+
+  create_table "policy_items", force: :cascade do |t|
+    t.string "name"
+    t.boolean "view"
+    t.boolean "edit"
+    t.boolean "new"
+    t.boolean "destroy"
+    t.bigint "policy_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["policy_id"], name: "index_policy_items_on_policy_id"
   end
 
   create_table "roles", force: :cascade do |t|
