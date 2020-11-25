@@ -13,15 +13,20 @@
   </div>
   <br />
   <div class="field">
-    <%= f.text_field :givenname, autocomplete: "givenname", placeholder: :givenname, class: "p-1 border-1"  %>
+    <%= f.text_field :givenname, autocomplete: "givenname", placeholder: :givenname, class: "p-1 border-1" %>
   </div>
-  <br />
+  <br/>
   <div class="field">
-    <%= f.text_field :surname, autocomplete: "surname", placeholder: :surname, class: "p-1 border-1"  %>
+    <%= f.text_field :surname, autocomplete: "surname", placeholder: :surname, class: "p-1 border-1" %>
   </div>
   <br>
   <div class="field">
     <%== f.collection_select :role_id, Role.all, :id, :name, prompt: "Pick A Role" %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :avatar %>: <br/>
+    <%= f.file_field :avatar, class: "border-1" %>
   </div>
 
   <br/>

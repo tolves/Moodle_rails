@@ -29,15 +29,16 @@
         </div>
         <br/>
         <div class="field">
-          <%= f.text_field :givenname, autocomplete: "givenname" , placeholder: :givenname, class: "p-1 border-1" %>
+          <%= f.text_field :givenname, autocomplete: "givenname", placeholder: :givenname, class: "p-1 border-1" %>
         </div>
         <br/>
         <div class="field">
-          <%= f.text_field :surname, autocomplete: "surname" , placeholder: :surname, class: "p-1 border-1" %>
+          <%= f.text_field :surname, autocomplete: "surname", placeholder: :surname, class: "p-1 border-1" %>
         </div>
         <br/>
         <div class="field">
-          <%= f.file_field :avatar, class: "p-1 border-1" %>
+          <%= f.label :avatar %>:<br/>
+          <%= f.file_field :avatar, class: "border-1" %>
         </div>
         <br/>
         <div class="actions">

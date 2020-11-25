@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable #, authentication_keys: [:login]
   belongs_to :role
   has_and_belongs_to_many :courses
@@ -31,14 +29,12 @@ class User < ApplicationRecord
   end
 
   def avatar_type
-    if avatar.attached? == false
-      errors.add(:avatar, "is missing!")
-    else
+    if avatar.attached?
       unless avatar.content_type.in?(%('image/jpeg image/png image/jpg image/gif'))
         errors.add(:avatar, "type needs to be a jpg/jpeg/png/gif")
       end
       unless avatar.byte_size <= 1.megabyte
-        errors.add(:main_image, "is too big")
+        errors.add(:avatar, "is too big")
       end
     end
   end
