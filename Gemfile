@@ -59,7 +59,7 @@ gem 'font-awesome-rails'
 gem 'image_processing', '~> 1.2'
 gem 'rmagick'
 
-gem 'yarn', '~> 0.1.1'
+# gem 'yarn', '~> 0.1.1'
 
 # s3 storage
 gem 'aws-sdk-s3', require: false
