@@ -20,3 +20,7 @@ Heroku deployment
 4. Precompile
 - rake assets:clobber RAILS_ENV=production
 - rake assets:precompile RAILS_ENV=production
+
+Or you can edit 'config/environments/production.rb' to set it automatically compile #Not recommended
+
+```config.assets.compile = true ```
