@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable #, authentication_keys: [:login]
   belongs_to :role
+  has_many :policies, as: :subject
   has_and_belongs_to_many :courses
-  has_many :policies
   has_and_belongs_to_many :groups
 
   has_one_attached :avatar
@@ -31,10 +31,10 @@ class User < ApplicationRecord
   def avatar_type
     if avatar.attached?
       unless avatar.content_type.in?(%('image/jpeg image/png image/jpg image/gif'))
-        errors.add(:avatar, "type needs to be a jpg/jpeg/png/gif")
+        errors.add(:avatar, 'type needs to be a jpg/jpeg/png/gif')
       end
       unless avatar.byte_size <= 1.megabyte
-        errors.add(:avatar, "is too big")
+        errors.add(:avatar, 'is too big')
       end
     end
   end

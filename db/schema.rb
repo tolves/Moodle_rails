@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_232451) do
+ActiveRecord::Schema.define(version: 2020_11_25_131705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,20 +65,18 @@ ActiveRecord::Schema.define(version: 2020_11_24_232451) do
 
   create_table "policies", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id"
-    t.bigint "group_id"
-    t.bigint "role_id"
-    t.bigint "course_id"
     t.boolean "view"
     t.boolean "destroy"
     t.boolean "new"
     t.boolean "edit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_policies_on_course_id"
-    t.index ["group_id"], name: "index_policies_on_group_id"
-    t.index ["role_id"], name: "index_policies_on_role_id"
-    t.index ["user_id"], name: "index_policies_on_user_id"
+    t.string "subject_type"
+    t.bigint "subject_id"
+    t.string "object_type"
+    t.bigint "object_id"
+    t.index ["object_type", "object_id"], name: "index_policies_on_object_type_and_object_id"
+    t.index ["subject_type", "subject_id"], name: "index_policies_on_subject_type_and_subject_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -142,5 +140,4 @@ ActiveRecord::Schema.define(version: 2020_11_24_232451) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "users", "roles"
-  add_foreign_key "wikis", "courses"
 end

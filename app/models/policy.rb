@@ -1,6 +1,4 @@
 class Policy < ApplicationRecord
-  belongs_to :user
-  belongs_to :role
-  belongs_to :course
-  belongs_to :group
+  belongs_to :subject, polymorphic: true
+  belongs_to :object, polymorphic: true
 end
