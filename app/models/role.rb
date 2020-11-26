@@ -1,4 +1,4 @@
 class Role < ApplicationRecord
   has_many :users
-  has_many :policies, as: :subject
+  has_many :type_policies, as: :subject
 end

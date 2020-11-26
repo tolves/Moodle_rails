@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable #, authentication_keys: [:login]
   belongs_to :role
-  has_many :policies, as: :subject
+  has_many :type_policies, as: :subject
   has_and_belongs_to_many :courses
   has_and_belongs_to_many :groups
 
