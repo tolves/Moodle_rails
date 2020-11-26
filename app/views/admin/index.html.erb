@@ -1,7 +1,7 @@
 <nav>
   <div class="nav nav-tabs" role="tablist" id="nav-tab">
-    <% @nav_items.each do |n| %>
-      <a class="nav-item nav-link <%= 'active' if n == 'site_administration' %>" id="nav-<%= n %>-tab" data-toggle="tab" href="#nav-<%= n %>" role="tab" aria-controls="nav-<%= n %>" <%= 'aria-selected="true"' if n == 'site_administration' %>><%= n.titleize %></a>
+    <% @tabs.each do |tab, rows| %>
+      <a class="nav-item nav-link <%= 'active' if tab.to_s == 'site_administration' %>" id="nav-<%= tab %>-tab" data-toggle="tab" href="#nav-<%= tab %>" role="tab" aria-controls="nav-<%= tab %>" <%= 'aria-selected="true"' if tab.to_s == 'site_administration' %>><%= tab.to_s.titleize %></a>
     <% end %>
   </div>
 </nav>
