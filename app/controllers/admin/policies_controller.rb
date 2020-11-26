@@ -26,20 +26,17 @@ class Admin::PoliciesController < ApplicationController
   end
 
   def attach
-    @subject = @subject_class.find(@subject_id)
     @attach = @subject.type_policies.build
   end
 
   def attach_create
-    @subject = @subject_class.find(@subject_id)
-
     begin
       @subject.type_policies.create! params_attach
       flash.notice = 'Add Policy Successful'
-      redirect_to admin_role_path @subject and return
+      redirect_to @path_subject and return
     rescue StandardError => e
       flash.alert = e
-      redirect_to admin_role_attach_path @subject
+      redirect_to @path_attach
     end
   end
 
@@ -70,5 +67,8 @@ class Admin::PoliciesController < ApplicationController
     end
     @subject_class = Object.const_get subject_class
     @subject_id = params[subject_id]
+    @subject = @subject_class.find(@subject_id)
+    @path_attach = send("admin_#{subject_class.downcase}_attach_path", @subject)
+    @path_subject = send("admin_#{subject_class.downcase}_path", @subject)
   end
 end

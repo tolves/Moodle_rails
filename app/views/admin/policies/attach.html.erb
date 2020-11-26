@@ -1,6 +1,6 @@
 <h2> Attach new policies</h2>
 
-<%= form_for @attach, url: admin_role_attach_path(@subject) do |f| %>
+<%= form_for @attach, url: @path_attach do |f| %>
   <div class="field">
     <!--    todo: provide better presentation of policy selection, and ignore the policy has attached-->
     <%= f.label :policy_id %>
