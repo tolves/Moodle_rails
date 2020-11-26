@@ -13,7 +13,7 @@
     <%== f.collection_select :object_id, Course.all, :id, :name, prompt: "Pick a Course" %>
   </div>
   <br/>
-  <%== render partial: 'items', locals: {items: @policy_items, f: f} %>
+  <%== render partial: 'form_items', locals: {items: @policy_items, f: f} %>
   <br/>
   <div class="actions">
     <%= f.submit %>
