@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users do
-      resources :policies
+      get 'attach', to: 'policies#attach'
+      post 'attach', to: 'policies#attach_create'
     end
     resources :courses do
       resources :policies
