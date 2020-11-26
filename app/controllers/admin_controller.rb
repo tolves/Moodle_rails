@@ -19,19 +19,6 @@ class AdminController < ApplicationController
 
   def admin_dashboard
     {
-      users: {
-        accounts: {
-          'browse_list_users' => admin_users_path,
-          'add_a_new_user' => new_admin_user_path,
-          'user_default_preferences' => '',
-          'User_customise_fields' => '',
-          'group' => ''
-        },
-        permissions: {
-            'manage_roles' => admin_roles_path,
-            'add_a_new_role' => new_admin_role_path
-        }
-      },
       site_administration: {
         '': {
           'notifications' => '',
@@ -51,13 +38,26 @@ class AdminController < ApplicationController
           'language_packs' => '',
         },
         location: {
-          'location_settings' => '',
+            'location_settings' => '',
         },
         badges: {
-          'manage_badges' => '',
-          'add_new_badges' => '',
-          'badges_settings' => '',
+            'manage_badges' => '',
+            'add_new_badges' => '',
+            'badges_settings' => '',
         }
+      },
+      users: {
+          accounts: {
+              'browse_list_users' => admin_users_path,
+              'add_a_new_user' => new_admin_user_path,
+              'user_default_preferences' => '',
+              'User_customise_fields' => '',
+              'group' => ''
+          },
+          permissions: {
+              'manage_roles' => admin_roles_path,
+              'add_a_new_role' => new_admin_role_path
+          }
       },
       courses: {
           courses: {
@@ -70,7 +70,7 @@ class AdminController < ApplicationController
       },
       policies: {
           policies: {
-              'manage_policies' => '',
+              'manage_policies' => admin_policies_path,
               'add_a_new_policy' => new_admin_policy_path
           }
       }
