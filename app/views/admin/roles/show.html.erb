@@ -2,27 +2,5 @@
   <strong>Role Name:</strong>
   <%== @role.name %>
 </p>
-<%= link_to :attached_new_policies, admin_role_attach_path(@role) %>
-<p><strong>Policies</strong></p>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Object</th>
-    <th>View</th>
-    <th>New</th>
-    <th>Edit</th>
-    <th>Destroy</th>
-  </tr>
-  <% @role.type_policies.each do |p| %>
-    <% if p %>
-      <tr>
-        <td><%= p.policy.name %></td>
-        <td><%= p.policy.object.name %></td>
-        <td><%= p.policy.policy_item.view %></td>
-        <td><%= p.policy.policy_item.new %></td>
-        <td><%= p.policy.policy_item.edit %></td>
-        <td><%= p.policy.policy_item.remove %></td>
-      </tr>
-    <% end %>
-  <% end %>
-</table>
+<p><%= link_to :attached_new_policies, admin_role_attach_path(@role) %></p>
+<%= render partial: 'admin/policies/show_policy_items', locals: {object: @role} %>

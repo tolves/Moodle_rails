@@ -1,0 +1,23 @@
+<p><strong>Policies</strong></p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Object</th>
+    <th>View</th>
+    <th>New</th>
+    <th>Edit</th>
+    <th>Destroy</th>
+  </tr>
+  <% object.type_policies.each do |p| %>
+    <% if p %>
+      <tr>
+        <td><%= p.policy.name %></td>
+        <td><%= p.policy.object.name %></td>
+        <td><%= p.policy.policy_item.view %></td>
+        <td><%= p.policy.policy_item.new %></td>
+        <td><%= p.policy.policy_item.edit %></td>
+        <td><%= p.policy.policy_item.remove %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
