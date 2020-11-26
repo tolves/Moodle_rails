@@ -23,6 +23,8 @@ class Admin::PoliciesController < ApplicationController
                      @policy.errors
                    end
     redirect_to admin_policies_path
+
+
   end
 
   def attach
@@ -30,14 +32,12 @@ class Admin::PoliciesController < ApplicationController
   end
 
   def attach_create
-    begin
-      @subject.type_policies.create! params_attach
-      flash.notice = 'Add Policy Successful'
-      redirect_to @path_subject and return
-    rescue StandardError => e
-      flash.alert = e
-      redirect_to @path_attach
-    end
+    @subject.type_policies.create! params_attach
+    flash.notice = 'Add Policy Successful'
+    redirect_to @path_subject and nil
+  rescue StandardError => e
+    flash.alert = e
+    redirect_to @path_attach
   end
 
 
