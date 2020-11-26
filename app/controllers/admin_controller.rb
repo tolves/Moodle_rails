@@ -19,7 +19,7 @@ class AdminController < ApplicationController
 
   def admin_dashboard
     {
-      site_administration: {
+        site_administration: {
         '': {
           'notifications' => '',
           'registration' => '',
@@ -46,34 +46,37 @@ class AdminController < ApplicationController
             'badges_settings' => '',
         }
       },
-      users: {
-          accounts: {
-              'browse_list_users' => admin_users_path,
-              'add_a_new_user' => new_admin_user_path,
-              'user_default_preferences' => '',
-              'User_customise_fields' => '',
-              'group' => ''
-          },
-          permissions: {
-              'manage_roles' => admin_roles_path,
-              'add_a_new_role' => new_admin_role_path
-          }
-      },
-      courses: {
-          courses: {
-              'manage_courses' => courses_path,
-              'manage_courses_categories' => '',
-              'add_a_new_course' => new_course_path,
-              'course_custom_fileds' => '',
-              'course_settings' => '',
-          }
-      },
-      policies: {
-          policies: {
-              'manage_policies' => admin_policies_path,
-              'add_a_new_policy' => new_admin_policy_path
-          }
-      }
+        users: {
+            accounts: {
+                'browse_list_users' => admin_users_path,
+                'add_a_new_user' => new_admin_user_path,
+                'user_default_preferences' => '',
+                'User_customise_fields' => '',
+                'group' => ''
+            }
+        },
+        courses: {
+            courses: {
+                'manage_courses' => courses_path,
+                'manage_courses_categories' => '',
+                'add_a_new_course' => new_course_path,
+                'course_custom_fileds' => '',
+                'course_settings' => '',
+            }
+        },
+        policies: {
+            policies: {
+                'manage_policies' => admin_policies_path,
+                'add_a_new_policy' => new_admin_policy_path
+            }
+        },
+        roles: {
+            roles: {
+                'manage_roles' => admin_roles_path,
+                'add_a_new_role' => new_admin_role_path
+            }
+
+        }
     }
   end
 end
