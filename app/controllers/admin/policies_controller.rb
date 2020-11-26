@@ -1,4 +1,6 @@
 class Admin::PoliciesController < ApplicationController
+  before_action :prepare_subject, only: %i[attach attach_create]
+
   def index
     @policies = Policy.last
   end
@@ -6,6 +8,7 @@ class Admin::PoliciesController < ApplicationController
   def new
     @policy = Policy.new
     @policy_items = @policy.build_policy_item
+    @classes = ApplicationController.subclasses
   end
 
   def create
@@ -22,6 +25,24 @@ class Admin::PoliciesController < ApplicationController
     redirect_to admin_policies_path
   end
 
+  def attach
+    @subject = @subject_class.find(@subject_id)
+    @attach = @subject.type_policies.build
+  end
+
+  def attach_create
+    @subject = @subject_class.find(@subject_id)
+
+    begin
+      @subject.type_policies.create! params_attach
+      flash.notice = 'Add Policy Successful'
+      redirect_to admin_role_path @subject and return
+    rescue StandardError => e
+      flash.alert = e
+      redirect_to admin_role_attach_path @subject
+    end
+  end
+
 
   private
 
@@ -33,5 +54,21 @@ class Admin::PoliciesController < ApplicationController
   def params_policy_item
     attrs = %i[view new edit remove]
     params.require(:policy).require(:policy_item).permit(attrs)
+  end
+
+  def params_attach
+    params.require(:type_policy).permit(:policy_id)
+  end
+
+  def prepare_subject
+    subject_id = params.keys.select { |p| p.match(/^\w+_id$/) }
+    if subject_id && subject_id.size == 1
+      subject_id = subject_id[0]
+      subject_class = subject_id[0..-4].capitalize
+    else
+      return false
+    end
+    @subject_class = Object.const_get subject_class
+    @subject_id = params[subject_id]
   end
 end
