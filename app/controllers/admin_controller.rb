@@ -1,7 +1,5 @@
 class AdminController < ApplicationController
   def index
-    @menu = %w[a b c d]
-    @nav_items = %w[site_administration users courses grades plugins apperance server reports development]
     @tabs = admin_dashboard
   end
 
@@ -62,13 +60,19 @@ class AdminController < ApplicationController
         }
       },
       courses: {
-        courses: {
-            'manage_courses' => courses_path,
-            'manage_courses_categories' => '',
-            'add_a_new_course' => new_course_path,
-            'course_custom_fileds' => '',
-            'course_settings' => '',
-        }
+          courses: {
+              'manage_courses' => courses_path,
+              'manage_courses_categories' => '',
+              'add_a_new_course' => new_course_path,
+              'course_custom_fileds' => '',
+              'course_settings' => '',
+          }
+      },
+      policies: {
+          policies: {
+              'manage_policies' => '',
+              'add_a_new_policy' => new_admin_policy_path
+          }
       }
     }
   end
