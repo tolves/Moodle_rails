@@ -12,8 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users do
-      get 'attach', to: 'policies#attach'
-      post 'attach', to: 'policies#attach_create'
+      resources :type_policies, only: %i[new create destroy]
     end
     resources :courses do
       resources :policies
