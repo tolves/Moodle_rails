@@ -34,7 +34,7 @@ class Admin::TypePoliciesController < ApplicationController
     subject_id = params.keys.select { |p| p.match(/^\w+_id$/) }
     if subject_id && subject_id.size == 1
       subject_id = subject_id[0]
-      subject_class = subject_id[0..-4].capitalize
+      subject_class = subject_id.to(-4).capitalize
     else
       return false
     end

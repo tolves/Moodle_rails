@@ -19,7 +19,7 @@
           <td><%= p.policy.policy_item.edit %></td>
           <td><%= p.policy.policy_item.remove %></td>
           <td>
-            <%= link_to send("admin_#{controller_name[0..-2]}_type_policy_path", object, p), method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <%= link_to send("admin_#{controller_name.singularize}_type_policy_path", object, p), method: :delete, data: {confirm: 'Are you sure?'} do %>
               <%= fa_icon "trash" %>
             <% end %>
           </td>
