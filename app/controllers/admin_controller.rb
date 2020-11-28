@@ -3,6 +3,7 @@
 class AdminController < ApplicationController
   def index
     @tabs = admin_dashboard
+    # OPTIMISE stable?
   end
 
   def show; end

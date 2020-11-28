@@ -1,0 +1,20 @@
+<h2> Add new authorities</h2>
+
+<%= form_for @authority, url: admin_role_role_authorities_path(@role) do |f| %>
+  <div class="field">
+    <!--    todo: provide better presentation of policy selection, and ignore the policy has attached-->
+    <%= f.label :controller_name %>
+    <%== f.select :controller_name, @controllers.collect { |p| [p, p] }, {:class => "controller_selection"} %>
+    <%#== f.collection_select :controller_name, Policy.all, :id, :name, prompt: "Pick a Policy" %>
+  </div>
+  <br/>
+  <div class="field">
+    <!--    todo: provide better presentation of policy selection, and ignore the policy has attached-->
+    <%= f.label :action_names %>
+    <span id='results'></span>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit data: {"disable-with": "Saving..."} %>
+  </div>
+<% end %>
