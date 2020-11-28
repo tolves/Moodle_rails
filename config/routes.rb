@@ -21,8 +21,7 @@ Rails.application.routes.draw do
       resources :policies
     end
     resources :roles do
-      get 'attach', to: 'policies#attach'
-      post 'attach', to: 'policies#attach_create'
+      resources :role_authorities
     end
     resources :policies
   end
