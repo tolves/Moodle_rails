@@ -1,7 +1,9 @@
 <nav>
   <div class="nav nav-tabs" role="tablist" id="nav-tab">
     <% @tabs.each do |tab, rows| %>
-      <a class="nav-item nav-link <%= 'active' if tab.to_s == 'site_administration' %>" id="nav-<%= tab %>-tab" data-toggle="tab" href="#nav-<%= tab %>" role="tab" aria-controls="nav-<%= tab %>" <%= 'aria-selected="true"' if tab.to_s == 'site_administration' %>><%= tab.to_s.titleize %></a>
+      <% cache tab do %>
+        <a class="nav-item nav-link <%= 'active' if tab.to_s == 'site_administration' %>" id="nav-<%= tab %>-tab" data-toggle="tab" href="#nav-<%= tab %>" role="tab" aria-controls="nav-<%= tab %>" <%= 'aria-selected="true"' if tab.to_s == 'site_administration' %>><%= tab.to_s.titleize %></a>
+      <% end %>
     <% end %>
   </div>
 </nav>
@@ -9,20 +11,22 @@
   <% @tabs.each do |tab, rows| %>
     <div class="tab-pane fade <%= 'active show' if tab.to_s == 'site_administration' %>" id="nav-<%= tab %>" role="tabpanel" aria-labelledby="nav-<%= tab %>-tab">
       <div class="container">
-        <% rows.each do |title, links| %>
-          <div class="row">
-            <div class="col-sm-3">
-              <h4><%= title.to_s.titleize %></h4>
+        <% cache rows do %>
+          <% rows.each do |title, links| %>
+            <div class="row">
+              <div class="col-sm-3">
+                <h4><%= title.to_s.titleize %></h4>
+              </div>
+              <div class="col-sm-7">
+                <ul class="list-group">
+                  <% links.each do |link, path| %>
+                    <%= link_to link.titleize, path, class: 'list-group-item list-group-item-action border-0' %>
+                  <% end %>
+                </ul>
+              </div>
             </div>
-            <div class="col-sm-7">
-              <ul class="list-group">
-                <% links.each do |link, path| %>
-                  <%= link_to link.titleize, path, class: 'list-group-item list-group-item-action border-0' %>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-          <hr>
+            <hr>
+          <% end %>
         <% end %>
       </div>
     </div>
