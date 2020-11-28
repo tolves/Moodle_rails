@@ -7,7 +7,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-require("packs/custom")
+require("packs/custom.js")
 import "bootstrap"
 
 //= require_tree .

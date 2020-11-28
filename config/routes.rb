@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
     resources :roles do
       resources :role_authorities
-      post '/find_by_controller/:id', to: 'role_authorities#find_by_controller'
+      post 'find_by_controller', to: 'role_authorities#find_by_controller'
     end
     resources :policies
   end
