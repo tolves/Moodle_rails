@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :users do
       resources :type_policies, only: %i[new create destroy]
     end
+    resources :groups do
+      resources :type_policies, only: %i[new create destroy]
+    end
     resources :courses do
       resources :policies
     end

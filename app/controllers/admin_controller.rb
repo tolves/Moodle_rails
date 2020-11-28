@@ -51,8 +51,11 @@ class AdminController < ApplicationController
                 'browse_list_users' => admin_users_path,
                 'add_a_new_user' => new_admin_user_path,
                 'user_default_preferences' => '',
-                'User_customise_fields' => '',
-                'group' => ''
+                'User_customise_fields' => ''
+            },
+            group: {
+                'browse_list_groups' => admin_groups_path,
+                'add_a_new_group' => new_admin_group_path
             }
         },
         courses: {
