@@ -1,5 +1,4 @@
 class Admin::RoleAuthoritiesController < ApplicationController
-  protect_from_forgery except: [:find_by_controller]
 
   def new
     @role        = Role.find(params[:role_id])
@@ -13,7 +12,7 @@ class Admin::RoleAuthoritiesController < ApplicationController
 
   def find_by_controller
     controller = Object.const_get params[:select_controller]
-    actions    = controller.action_methods
+    actions = controller.action_methods
     respond_to do |format|
       format.json do
         render json: {result: actions.to_json}
