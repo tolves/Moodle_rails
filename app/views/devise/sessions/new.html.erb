@@ -14,7 +14,7 @@
     </div>
   <% end %>
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit data: {"disable-with": "Login..."} %>
   </div>
 <% end %>
 <%= render "devise/shared/links" %>

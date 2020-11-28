@@ -16,7 +16,7 @@
   <%== render partial: 'form_items', locals: {items: @policy_items, f: f} %>
   <br/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit data: {"disable-with": "Saving..."} %>
   </div>
 <% end %>
 <br/>
