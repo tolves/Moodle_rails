@@ -11,11 +11,13 @@ class Admin::RoleAuthoritiesController < ApplicationController
   def destroy; end
 
   def find_by_controller
-    controller = Object.const_get params[:select_controller]
-    actions = controller.action_methods
+    controller  = Object.const_get params[:select_controller]
+    actions     = controller.action_methods.reject { |action| action.match(/check_permission|permissions/) }
+    authorities = RoleAuthority.select(:action_names).find_by(role_id: params[:role_id], controller_name: params[:select_controller])
+    actions - authorities if authorities
     respond_to do |format|
       format.json do
-        render json: {result: actions.to_json}
+        render json: actions.to_json
       end
     end
   end

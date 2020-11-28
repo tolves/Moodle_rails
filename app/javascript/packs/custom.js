@@ -17,9 +17,11 @@ $(document).ready(function () {
             },
             success: function (response) {
                 console.log(response);
+                $("#role_authority_action_names").empty();
                 for (var i in response) {
-                    var id = response[i];
-                    $("#role_authority_action_names").append(new Option(id));
+                    // $("#role_authority_action_names").append(new Option(response[i],response[i]));
+                    $("#role_authority_action_names").append(new Option(response[i], response[i]));
+                    // $("#role_authority_action_names").find('[value=' + response[i].join('], [value=') + ']').prop("checked", true);
                 }
             }
         })
