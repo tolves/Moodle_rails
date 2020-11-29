@@ -2,5 +2,5 @@
   <strong>Role Name:</strong>
   <%== @role.name %>
 </p>
-<p><%= link_to :edit_authority, new_admin_role_role_authority_path(@role) %></p>
+<p><%= link_to :edit_authority, new_admin_role_role_authority_path(@role), method: :get %></p>
 <%= render partial: 'admin/role_authorities/authorities', locals: {authorities: @role.role_authorities} %>
