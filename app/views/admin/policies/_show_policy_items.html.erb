@@ -9,7 +9,7 @@
       <th>Destroy</th>
       <th>Edit</th>
     </tr>
-    <% object.type_policies.each do |p| %>
+    <% object.each do |p| %>
       <% if p %>
         <tr>
           <td><%= p.policy.name %></td>
@@ -19,7 +19,7 @@
           <td><%= p.policy.policy_item.edit %></td>
           <td><%= p.policy.policy_item.remove %></td>
           <td>
-            <%= link_to send("admin_#{controller_name.singularize}_type_policy_path", object, p), method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <%= link_to send("admin_#{p.subject_type.downcase.singularize}_type_policy_path", p.subject_id, p), method: :delete, data: {confirm: 'Are you sure?'} do %>
               <%= fa_icon "trash" %>
             <% end %>
           </td>
