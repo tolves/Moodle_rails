@@ -1,1 +1,31 @@
-<%= authorities.inspect %>
+<div class="table-responsive">
+  <table id='policies' class="table table-sm table-hover table-striped">
+    <tr>
+      <th>Controller</th>
+      <th>Actions</th>
+      <th>created_at</th>
+      <th>updated_at</th>
+      <th>Edit</th>
+    </tr>
+    <% authorities.each do |authority| %>
+      <% if authority %>
+        <tr>
+          <td><%= authority.controller_name %></td>
+          <td><%= authority.action_names %></td>
+          <td><%= authority.created_at %></td>
+          <td><%= authority.updated_at %></td>
+          <td>
+            <%= link_to admin_role_role_authority_path(authority.role_id, authority), method: :delete, data: {confirm: 'Are you sure?'} do %>
+              <%= fa_icon "trash" %>
+            <% end %>
+            <%= link_to edit_admin_role_role_authority_path(authority.role_id, authority), method: :get do %>
+              <%= fa_icon "edit" %>
+            <% end %>
+          </td>
+
+
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
