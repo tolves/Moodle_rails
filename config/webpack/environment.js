@@ -15,6 +15,7 @@ environment.plugins.prepend('Provide', new webpack.ProvidePlugin({
         jquery: 'jquery',
         "window.jQuery": "jquery",
         Popper: ['popper.js', 'default'], // for Bootstrap 4
+        Rails: ['@rails/ujs']
     })
 )
 

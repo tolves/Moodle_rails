@@ -1,9 +1,8 @@
 // ujs could let you dont need to add: protect_from_forgery except: [:find_by_controller]
 // which means ujs could provide csrf
-import Rails from "@rails/ujs";
+// import Rails from "@rails/ujs";
 
 $(document).ready(function () {
-    console.log("custom js file loaded")
     $('#role_authority_controller_name').change(function () {
         var data = {select_controller: $(this).val()}
         Rails.ajax({
@@ -27,4 +26,5 @@ $(document).ready(function () {
             }
         })
     })
+    console.log("custom js file loaded")
 });
