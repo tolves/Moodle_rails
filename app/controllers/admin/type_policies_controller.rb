@@ -3,6 +3,7 @@ class Admin::TypePoliciesController < ApplicationController
 
   def new
     @attach = @subject.type_policies.build
+    @header_title = :attach_a_policy
   end
 
   def create

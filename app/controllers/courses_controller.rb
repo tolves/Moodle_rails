@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def index
     @courses = Course.all
+    @header_title = :Courses
     respond_to do |format|
       format.json { render json: @courses }
       format.html { render :index }

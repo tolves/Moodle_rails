@@ -8,8 +8,7 @@ module Admin
       @authority = @role.role_authorities.build
       fresh_when last_modified: @role.updated_at.utc, etag: @role
       @controllers = controllers
-      @path        = admin_role_role_authorities_path @role
-
+      @header_title = :add_a_new_authority
     end
 
     def create
@@ -24,6 +23,7 @@ module Admin
     def edit
       @authority    = @role.role_authorities.find(params[:id])
       @action_names = find_by_controller @authority.controller_name
+      @header_title = :edit_authority
     end
 
     def update

@@ -1,5 +1,3 @@
-<h2>Add A New Policy</h2>
-
 <%= form_for(@policy, url: admin_policies_path(@policy), html: {method: :post}) do |f| %>
 
   <%= f.hidden_field :object_type, value: 'Course' %>

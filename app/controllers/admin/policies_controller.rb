@@ -1,13 +1,15 @@
 class Admin::PoliciesController < ApplicationController
 
   def index
-    @policies = Policy.last
+    @policies     = Policy.all
+    @header_title = :Policies
   end
 
   def new
     @policy = Policy.new
     @policy_items = @policy.build_policy_item
     @classes = ApplicationController.subclasses
+    @header_title = :add_a_new_policy
   end
 
   def create

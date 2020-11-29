@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :flash_format
   before_action :header_links
+  before_action :header_title
 
   protected
 
@@ -40,5 +41,9 @@ class ApplicationController < ActionController::Base
       end
     end
     @header_links.reverse!
+  end
+
+  def header_title
+    @header_title ||= 'Moodle Ruby On Rails'
   end
 end

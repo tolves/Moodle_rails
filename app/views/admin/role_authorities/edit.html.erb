@@ -1,9 +1,6 @@
-<h2> Edit authority</h2>
-
 <%= form_for @authority, url: admin_role_role_authority_path(@role), method: :put do |f| %>
   <%= hidden_field_tag :role_id, params[:role_id] %>
   <div class="field">
-    <%= f.label :controller_name %>: <br/>
     <%= @authority.controller_name %>
   </div>
   <br/>

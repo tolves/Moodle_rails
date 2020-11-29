@@ -1,14 +1,17 @@
 class Admin::UsersController < ApplicationController
   def index
     @users = User.all
+    @header_title = :browser_users
   end
 
   def show
     @user = User.find(params[:id])
+    @header_title = :user_details
   end
 
   def new
     @user = User.new
+    @header_title = :add_a_new_user
   end
 
   def create; end
@@ -16,6 +19,7 @@ class Admin::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @minimum_password_length = 6
+    @header_title = :edit_profile
   end
 
   def update
