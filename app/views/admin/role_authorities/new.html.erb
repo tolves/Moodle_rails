@@ -4,14 +4,18 @@
   <%= hidden_field_tag :role_id, params[:role_id] %>
   <div class="field">
     <!--    todo: provide better presentation of policy selection, and ignore the policy has attached-->
-    <%= f.label :controller_name %>
+    <%= f.label :controller_name %> <br/>
 
     <%== f.select :controller_name, @controllers, prompt: "Pick a Controller" %>
   </div>
   <br/>
+
+
   <div class="field">
     <%= f.label :action_names %>
-    <%== f.select :action_names, '', prompt: "Pick a Controller First" %>
+    <div id="action_names">
+    </div>
+    <%#== f.select :action_names, '', prompt: "Pick a Controller First" %>
   </div>
   <br/>
   <div class="actions">

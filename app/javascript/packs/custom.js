@@ -8,7 +8,7 @@ $(document).ready(function () {
         var data = {select_controller: $(this).val()}
         Rails.ajax({
             type: "POST",
-            url: '/admin/roles/' + $('#role_id').val() + '/find_by_controller',
+            url: '/admin/roles/' + $('#role_id').val() + '/actions',
             data: new URLSearchParams(data).toString(),
             dataType: 'json',
             accept: 'json',
@@ -17,10 +17,11 @@ $(document).ready(function () {
             },
             success: function (response) {
                 console.log(response);
-                $("#role_authority_action_names").empty();
+                $("#action_names").empty();
                 for (var i in response) {
+                    $('#action_names').append("<input type='checkbox' name=role_authority[action_names][" + response[i] + "] id=role_authority_action_names value=" + response[i] + "> " + response[i] + " </input><br/>");
                     // $("#role_authority_action_names").append(new Option(response[i],response[i]));
-                    $("#role_authority_action_names").append(new Option(response[i], response[i]));
+                    // $("#role_authority_action_names").append(new Option(response[i], response[i]));
                     // $("#role_authority_action_names").find('[value=' + response[i].join('], [value=') + ']').prop("checked", true);
                 }
             }
