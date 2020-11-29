@@ -3,7 +3,7 @@
 // import Rails from "@rails/ujs";
 
 $(document).ready(function () {
-    $('#role_authority_controller_name').change(function () {
+    $('select#role_authority_controller_name').change(function () {
         var data = {select_controller: $(this).val()}
         Rails.ajax({
             type: "POST",
