@@ -8,6 +8,7 @@ module Admin
       @authority = @role.role_authorities.build
       fresh_when last_modified: @role.updated_at.utc, etag: @role
       @controllers = controllers
+      @path        = admin_role_role_authorities_path @role
 
     end
 
@@ -18,6 +19,21 @@ module Admin
     rescue StandardError => e
       flash.alert = e
       redirect_to new_admin_role_role_authority_path(@role)
+    end
+
+    def edit
+      @authority    = @role.role_authorities.find(params[:id])
+      @action_names = find_by_controller @authority.controller_name
+    end
+
+    def update
+      @authority              = @role.role_authorities.find(params[:id])
+      @authority.action_names = params[:action_names]
+      @authority.save!
+      redirect_to admin_role_path(@role) and nil
+    rescue StandardError => e
+      flash.alert = e
+      redirect_to edit_admin_role_role_authority_path(@role, @authority)
     end
 
     def destroy
@@ -31,21 +47,17 @@ module Admin
     end
 
     def actions
-      find_by_controller
+      actions = find_by_controller params[:select_controller]
+      respond_to do |format|
+        format.json { render json: actions.to_json }
+      end
     end
 
     private
 
-    def find_by_controller
-      controller = Object.const_get params[:select_controller]
-      actions    = controller.action_methods.reject { |action| action.match(/check_permission|permissions/) }
-      # authorities = RoleAuthority.select(:action_names).find_by(role_id: params[:role_id], controller_name: params[:select_controller])
-      # actions - authorities if authorities
-      respond_to do |format|
-        format.json do
-          render json: actions.to_json
-        end
-      end
+    def find_by_controller(controller)
+      controller = Object.const_get controller
+      controller.action_methods.reject { |action| action.match(/check_permission|permissions/) }
     end
 
     def controllers

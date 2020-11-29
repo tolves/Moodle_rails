@@ -1,0 +1,23 @@
+<h2> Edit authority</h2>
+
+<%= form_for @authority, url: admin_role_role_authority_path(@role), method: :put do |f| %>
+  <%= hidden_field_tag :role_id, params[:role_id] %>
+  <div class="field">
+    <%= f.label :controller_name %>: <br/>
+    <%= @authority.controller_name %>
+  </div>
+  <br/>
+
+  <div class="field">
+    <%= f.label :action_names %> <br/>
+    <% @action_names.each do |action| %>
+      <%= check_box_tag "action_names[]", action, @authority.action_names.include?(action), {:multiple => true} %>
+      <%= action %>
+      <br/>
+    <% end %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit data: {"disable-with": "Saving..."} %>
+  </div>
+<% end %>
