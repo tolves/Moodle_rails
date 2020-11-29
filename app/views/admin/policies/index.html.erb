@@ -1,1 +1,23 @@
-<%= @policies.inspect %>
+<div class="table-responsive">
+  <table id='policies' class="table table-sm table-hover table-striped">
+    <tr>
+      <th>ID</th>
+      <th>name</th>
+      <th>object_type</th>
+      <th>object</th>
+      <th>created_at</th>
+      <th>updated_at</th>
+      <th>edit</th>
+    </tr>
+    <% @policies.each do |policy| %>
+      <tr>
+        <td><%= policy.id %></td>
+        <td><%= policy.name %></td>
+        <td><%= policy.object_type %></td>
+        <td><%= policy.object.name %></td>
+        <td><%= policy.created_at %></td>
+        <td><%= policy.updated_at %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
