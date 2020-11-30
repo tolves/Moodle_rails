@@ -16,15 +16,15 @@ module Permission
     return if current_user.role.name == 'Administrator'
     return if controller_path == 'users'
 
-    # if include_controller?
-    #   unless include_action?
-    #     flash.alert = 'You do not have enough permission'
-    #     redirect_to :root and nil
-    #   end
-    # else
-    #   flash.alert = 'You do not have enough permission'
-    #   redirect_to :root
-    # end
+    if include_controller?
+      unless include_action?
+        flash.alert = 'You do not have enough permission'
+        redirect_to :root and nil
+      end
+    else
+      flash.alert = 'You do not have enough permission'
+      redirect_to :root
+    end
   end
 
   def include_controller?
