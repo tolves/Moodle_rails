@@ -8,35 +8,6 @@ module Permission
 
   private
 
-  def roles(user)
-    roles = {}
-    if user_signed_in?
-      user.role.role_authorities.each do |role|
-        roles[role.controller_name] = role.action_names
-      end
-      roles
-    end
-
-    # {
-    #   'products' => {
-    #       :user => %i[index show]
-    #   },
-    #   'users' => {
-    #       :user => %i[show update edit]
-    #   },
-    #   'admin' => {
-    #   },
-    #   'admin/products' => {
-    #   },
-    #   'admin/brands' => {
-    #   },
-    #   'admin/categories' => {
-    #   },
-    #   'admin/prices' => {
-    #   }
-    # }
-  end
-
   def check_policies
 
   end
