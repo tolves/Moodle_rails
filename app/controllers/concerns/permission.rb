@@ -45,13 +45,22 @@ module Permission
     return if current_user.role.name == 'Administrator'
     return if controller_path == 'users'
 
-    user_roles    = roles current_user
-    current_path  = controller_path.camelcase << 'Controller'
-    current_roles = user_roles[current_path]
-
-    unless current_roles&.include? action_name
+    if include_controller?
+      unless include_action?
+        flash.alert = 'You do not have enough permission'
+        redirect_to :root and nil
+      end
+    else
       flash.alert = 'You do not have enough permission'
       redirect_to :root
     end
+  end
+
+  def include_controller?
+    !current_user.role.role_authorities.where(controller_name: controller_path.camelcase << 'Controller').blank?
+  end
+
+  def include_action?
+    current_user.role.role_authorities.where(controller_name: controller_path.camelcase << 'Controller').first.action_names.include? action_name
   end
 end
