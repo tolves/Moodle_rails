@@ -7,32 +7,32 @@
   <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0 float-right">
       <li class="nav-item active">
-        <%= button_to root_path, class: 'btn btn-light', method: :get do %>
+        <%= link_to root_path, class: 'btn btn-light', method: :get do %>
           <%= fa_icon "home", text: "Home" %>
         <% end %>
       </li>
       <li class="nav-item active disabled">
-        <%= button_to root_path, class: 'btn btn-light', method: :get do %>
+        <%= link_to root_path, class: 'btn btn-light', method: :get do %>
           <%= fa_icon "search", text: "Search" %>
         <% end %>
       </li>
       <li class="nav-item active disabled">
-        <%= button_to root_path, class: 'btn btn-light', method: :get do %>
+        <%= link_to root_path, class: 'btn btn-light', method: :get do %>
           <%= fa_icon "bell" %>
         <% end %>
       </li>
       <li class="nav-item active disabled">
-        <%= button_to root_path, class: 'btn btn-light', method: :get do %>
+        <%= link_to root_path, class: 'btn btn-light', method: :get do %>
           <%= fa_icon "comments" %>
         <% end %>
       </li>
       <li class="nav-item active">
-        <%= button_to profile_path, class: 'btn btn-light', method: :get do %>
+        <%= link_to profile_path, class: 'btn btn-light', method: :get do %>
           <%= fa_icon "user-circle", text: 'My Account' %>
         <% end %>
       </li>
       <li class="nav-item active disabled">
-        <%= button_to destroy_user_session_path, class: 'btn btn-light', method: :delete do %>
+        <%= link_to destroy_user_session_path, class: 'btn btn-light', method: :delete do %>
           <%= fa_icon "sign-out", text: 'Sign Out' %>
         <% end %>
       </li>
