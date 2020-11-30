@@ -1,46 +1,55 @@
 module Permission
   extend ActiveSupport::Concern
 
-  def permissions
-    {
-      'products' => {
-          :user => %i[index show]
-      },
-      'users' => {
-          :user => %i[show update edit]
-      },
-      'admin' => {
-      },
-      'admin/products' => {
-      },
-      'admin/brands' => {
-      },
-      'admin/categories' => {
-      },
-      'admin/prices' => {
-      }
-    }
+  included do
+    before_action :check_roles
+    before_action :check_policies
   end
 
-  def check_permission
-    return true if current_user.admin?
+  private
 
-    controller_permissions = permissions[controller_path]
-    role = current_user.role.to_sym
-    alert = 'You do not have enough permission'
-    if controller_permissions.keys.include?(role)
-      unless controller_permissions[role].include?(action_name.to_sym)
-        flash.alert = alert
-        return redirect_to :root
+  def roles(user)
+    roles = {}
+    if user_signed_in?
+      user.role.role_authorities.each do |role|
+        roles[role.controller_name] = role.action_names
       end
-      # if controller_name == 'users' && current_user != User.find(params[:id])
-      #   flash.alert = alert
-      #   redirect_to :root
-      # end
-    else
-      flash.alert = alert
+      roles
+    end
+
+    # {
+    #   'products' => {
+    #       :user => %i[index show]
+    #   },
+    #   'users' => {
+    #       :user => %i[show update edit]
+    #   },
+    #   'admin' => {
+    #   },
+    #   'admin/products' => {
+    #   },
+    #   'admin/brands' => {
+    #   },
+    #   'admin/categories' => {
+    #   },
+    #   'admin/prices' => {
+    #   }
+    # }
+  end
+
+  def check_policies
+
+  end
+
+  def check_roles
+    return if current_user.role.name == 'Administrator'
+    user_roles    = roles current_user
+    current_path  = controller_path.camelcase << 'Controller'
+    current_roles = user_roles[current_path]
+
+    unless current_roles&.include? action_name
+      flash.alert = 'You do not have enough permission'
       redirect_to :root
-      # head 403
     end
   end
 end

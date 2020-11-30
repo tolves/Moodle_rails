@@ -11,7 +11,11 @@
       <% if authority %>
         <tr>
           <td><%= authority.controller_name %></td>
-          <td><%= authority.action_names %></td>
+          <td>
+            <% authority.action_names.each do |action| %>
+              <%= action.humanize %>
+            <% end %>
+          </td>
           <td><%= authority.created_at %></td>
           <td><%= authority.updated_at %></td>
           <td>

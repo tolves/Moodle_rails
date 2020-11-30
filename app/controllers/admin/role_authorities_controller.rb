@@ -64,7 +64,7 @@ module Admin
       controllers = []
       Dir[Rails.root.join('app/controllers/*_controller.rb')].each do |path|
         p = (path.match(/(\w+)_controller.rb/); Regexp.last_match(1)).camelize
-        next if p == 'Application'
+        next if ['Application', 'Welcome'].include? p
 
         controllers.push [p, p + 'Controller']
       end
