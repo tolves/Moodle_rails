@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validate :avatar_type
 
+
   # attr_writer :login
   # validates :username, presence: true, uniqueness: { case_sensitive: false }
   # validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true

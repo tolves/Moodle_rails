@@ -43,6 +43,8 @@ module Permission
 
   def check_roles
     return if current_user.role.name == 'Administrator'
+    return if controller_path == 'users'
+
     user_roles    = roles current_user
     current_path  = controller_path.camelcase << 'Controller'
     current_roles = user_roles[current_path]
