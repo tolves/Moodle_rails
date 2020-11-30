@@ -4,7 +4,14 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
   # if devise under resources :users
   # log out will find users#destroy instead of devise#destroy
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    registrations: 'users/registrations',
+    unlocks:       'users/unlocks',
+    passwords:     'users/passwords',
+    # omniauth_callbacks: 'users/omniauth_callbacks',
+    confirmations: 'users/confirmations',
+  }
   resources :users, except: %i[index create show]
   get 'profile', to: 'users#show'
 
