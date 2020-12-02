@@ -1,8 +1,6 @@
 class WelcomeController < ApplicationController
-  skip_before_action :check_roles
-  skip_before_action :check_policies
 
   def index
-
+    @header_title = 'Welcome ' + current_user.role.name + ': ' + current_user.full_name
   end
 end
