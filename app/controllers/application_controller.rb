@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
   include Permission
-  before_action :authenticate_user!
-  before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :flash_format
-  before_action :header_links
-  before_action :header_title
+  before_action do
+    authenticate_user!
+    configure_permitted_parameters if devise_controller?
+    if user_signed_in?
+      check_roles
+      flash_format
+      header_links
+      header_title
+      left_menu
+    end
+  end
+
 
   protected
 
@@ -36,8 +43,7 @@ class ApplicationController < ActionController::Base
       path = paths.join('_')
       if Rails.application.routes.url_helpers.method_defined?((path + '_path').to_sym)
         @header_links.push [paths.last => path]
-      else
-        next
+      else next
       end
     end
     @header_links.reverse!
@@ -46,4 +52,11 @@ class ApplicationController < ActionController::Base
   def header_title
     @header_title ||= 'Moodle Ruby On Rails'
   end
+
+  def left_menu
+    @left_nav = { dashboard: '#', Calendar: '#', Private_files: '#', Customise_ontent: '#', my_courses: current_user
+    }
+
+  end
+
 end
