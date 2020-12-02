@@ -54,9 +54,8 @@ class ApplicationController < ActionController::Base
   end
 
   def left_menu
-    @left_nav = { dashboard: '#', Calendar: '#', Private_files: '#', Customise_ontent: '#', my_courses: current_user
-    }
-
+    @my_courses = current_user.type_policies&.map do |u|
+      u.policy.object
+    end
   end
-
 end

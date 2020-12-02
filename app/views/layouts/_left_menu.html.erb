@@ -8,7 +8,10 @@
     <a href="#" class="list-group-item list-group-item-action bg-light">Calendar</a>
     <a href="#" class="list-group-item list-group-item-action bg-light">Private files</a>
     <a href="#" class="list-group-item list-group-item-action bg-light">Customise Content</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">My courses</a>
-    <%= link_to :Site_Administration, admin_path, class: 'list-group-item list-group-item-action bg-light' %>
+    <a href="" class="list-group-item list-group-item-action list-group-item-primary disabled">My Courses:</a>
+    <% @my_courses.each do |course| %>
+      <%= link_to course.name.humanize, course, class: "list-group-item list-group-item-action bg-light pl-5" %>
+    <% end %>
+    <%= link_to :site_administration, admin_path, class: 'list-group-item list-group-item-action bg-light' %>
   <% end %>
 </div>
