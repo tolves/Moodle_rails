@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   before_action do
     authenticate_user!
     configure_permitted_parameters if devise_controller?
+    flash_format
     if user_signed_in?
       check_roles
-      flash_format
       header_links
       header_title
       left_menu
