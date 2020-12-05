@@ -1,0 +1,14 @@
+<%= form_for(@group, url: admin_groups_path(@group), html: { method: :post }) do |f| %>
+
+  <div class="field">
+    <%= f.text_field :name, autocomplete: "name", placeholder: :group_name, class: "p-1 border-1" %>
+  </div>
+  <br/>
+
+  <br/>
+  <div class="actions">
+    <%= f.submit data: { "disable-with": "Saving..." } %>
+  </div>
+<% end %>
+<br/>
+<%= button_to :back, :back, method: :get %>

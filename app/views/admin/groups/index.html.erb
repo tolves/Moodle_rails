@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <p><%= link_to :add_a_new_group, new_admin_group_path %></p>
+  <table id='groups' class="table table-sm table-hover table-striped">
+    <tr>
+      <th>ID</th>
+      <th>name</th>
+      <th>created_at</th>
+      <th>updated_at</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.id %></td>
+        <td><%= link_to group.name, admin_group_path(group) %></td>
+        <td><%= group.created_at %></td>
+        <td><%= group.updated_at %></td>
+        <td><%= button_to edit_admin_group_path(group), method: :get do %>
+            <%= fa_icon "edit" %>
+          <% end %>
+        </td>
+        <td>
+          <%= button_to admin_group_path(group), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= fa_icon "trash" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
