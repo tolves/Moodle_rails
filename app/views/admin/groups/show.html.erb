@@ -1,1 +1,9 @@
 <p> <%= @group.inspect %></p>
+
+<%= link_to :add_users, admin_group_members_path(@group) %>
+
+<%= render partial: 'admin/groups/members', locals: { members: @group.users } %>
+
+<p><%= link_to :attached_new_policies, new_admin_group_type_policy_path(@group) %></p>
+
+<%= render partial: 'admin/policies/table_policy_items', locals: { object: @group.type_policies } %>
