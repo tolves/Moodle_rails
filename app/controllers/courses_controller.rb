@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  before_action :check_policies
+
   def index
     @courses = Course.all
     @header_title = :Courses
@@ -8,7 +10,11 @@ class CoursesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    # TODO: courses could customise set modules(wikis/others)
+    # TODO: select users/groups into courses(a quick link with policy)
+
+  end
 
   def new
     @course = Course.new

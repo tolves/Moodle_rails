@@ -24,22 +24,19 @@ class Admin::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    path = if account_update_params[:password].blank?
-             if update_skip_password user, account_update_params
+    path = if params_account_update[:password].blank?
+             if update_skip_password user, params_account_update
                flash[:success] = t('.success', email: user.email)
                admin_user_path(user)
-             else
-               flash[:warning] = user.errors.messages
-               edit_admin_user_path(user)
+             else flash[:warning] = user.errors.messages
+             edit_admin_user_path(user)
              end
-           else
-             if user.update(account_update_params)
-               flash[:success] = t('.success', email: user.email)
-               admin_user_path(user)
-             else
-               flash[:warning] = user.errors.messages
-               edit_admin_user_path(user)
-             end
+           else if user.update(params_account_update)
+                  flash[:success] = t('.success', email: user.email)
+                  admin_user_path(user)
+                else flash[:warning] = user.errors.messages
+                edit_admin_user_path(user)
+                end
            end
     redirect_to path
   end
@@ -48,7 +45,7 @@ class Admin::UsersController < ApplicationController
 
   private
 
-  def account_update_params
+  def params_account_update
     attrs = %i[password password_confirmation current_password givenname surname role_id avatar]
     params.require(:user).permit(attrs)
   end
