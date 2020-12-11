@@ -22,7 +22,8 @@ environment.plugins.prepend('Provide', new webpack.ProvidePlugin({
 const config = environment.toWebpackConfig()
 
 config.resolve.alias = {
-        jquery: "jquery/src/jquery"
+        'jquery': "jquery/src/jquery",
+        'jquery-ui': 'jquery-ui-dist/jquery-ui.js'
 }
 
 // export the updated config

@@ -7,6 +7,7 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag '///ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css' %>
 
 </head>
 
@@ -40,6 +41,8 @@
       </div>
     </div>
   <% end %>
+  <div id="ajax-indicator" style="display:none;"><span><%= t(:label_loading) %></span></div>
+  <div id="ajax-modal" style="display:none;"></div>
   <div id="bottom"><%= render 'layouts/footer' %></div>
 </div>
 </body>
