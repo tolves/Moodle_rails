@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     end
     resources :groups do
       resources :type_policies, only: %i[new create destroy]
+      get 'members', to: 'groups#members'
+      get 'member/new', to: 'groups#member_new'
+      post 'member/create', to: 'groups#member_create'
     end
     resources :courses do
       resources :policies

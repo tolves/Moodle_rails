@@ -49,10 +49,27 @@ class Admin::GroupsController < ApplicationController
   ensure redirect_to admin_groups_path
   end
 
+  def members
+    @users = User.all
+    @group = Group.find(params[:group_id])
+  end
+
+  def member_new
+    @group = Group.find(params[:group_id])
+  end
+
+  def member_create
+
+  end
+
 
   private
 
   def params_group
     params.require(:group).permit(:name, :users)
+  end
+
+  def params_members
+    params.require(:group).permit(:name)
   end
 end
